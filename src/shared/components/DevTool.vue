@@ -101,22 +101,30 @@
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import { debounce } from "lodash-es";
 
-// 路由
+// 前台路由
 import propertyDevLinksF from "@/frontend/property/devLinks.js";
+import loginDevLinksF from "@/frontend/login/devLinks.js";
+import registerDevLinksF from "@/frontend/register/devLinks.js";
+import homeDevLinksF from "@/frontend/home/devLinks.js";
+import announcementDevLinksF from "@/frontend/announcement/devLinks.js";
+import helpDevLinksF from "@/frontend/help/devLinks.js";
+
+// 後台路由
+import adminDevLinksB from "@/backend/admin/devLinks.js";
 
 defineEmits(["toggle-bg"]);
 
 // 路由配置
-const frontendLinks = [...propertyDevLinksF];
-
-const adminLinks = [
-    // { to: "/admin-login2", label: "後台登入" },
-    // { to: "/admin2", label: "首頁" },
-    // { to: "/admin2/memberlist2", label: "會員列表" },
-    // { to: "/admin2/orders2", label: "訂單管理" },
-    // { to: "/admin2/coupons2", label: "優惠券管理" },
-    // { to: "/admin2/products2", label: "商品管理" },
+const frontendLinks = [
+    ...loginDevLinksF,
+    ...registerDevLinksF,
+    ...announcementDevLinksF,
+    ...propertyDevLinksF,
+    ...homeDevLinksF,
+    ...helpDevLinksF,
 ];
+
+const adminLinks = [...adminDevLinksB];
 
 // 基本狀態
 const isCollapsed = ref(true);

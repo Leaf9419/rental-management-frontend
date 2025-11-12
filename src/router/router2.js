@@ -8,6 +8,7 @@ import EmptyLayout from "@/layouts/EmptyLayout.vue";
 
 // 前台模組路由
 import loginRoutesF from "@/frontend/login/routes";
+import registerRoutesF from "@/frontend/register/routes";
 import announcementRoutesF from "@/frontend/announcement/routes";
 import helpRoutesF from "@/frontend/help/routes";
 import homeRoutesF from "@/frontend/home/routes";
@@ -40,7 +41,7 @@ const routes = [
     {
         path: "/auth",
         component: AuthLayout,
-        children: [...loginRoutesF],
+        children: [...loginRoutesF, ...registerRoutesF],
     },
 
     // ===== empty layout =====
