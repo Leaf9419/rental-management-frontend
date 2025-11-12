@@ -27,7 +27,7 @@ import Announcement from "@/frontend/announcement/views/Announcement.vue";
 import Help from "@/frontend/help/views/Help.vue";
 
 // Property路由
-import propertyRoutesF from "@/frontend/property/propertyRoutesF";
+import propertyRoutesF from "@/frontend/property/routes";
 
 const routes = [
     // ===== default layout =====
@@ -38,17 +38,15 @@ const routes = [
             { path: "", component: Home },
             { path: "announcement", component: Announcement },
             { path: "help", component: Help },
-            ...propertyRoutesF
-        ]
+            ...propertyRoutesF,
+        ],
     },
 
     // ===== admin layout =====
     {
         path: "/admin",
         component: AdminLayout,
-        children: [
-            { path: "", component: Admin }
-        ]
+        children: [{ path: "", component: Admin }],
     },
 
     // ===== auth layout =====
@@ -57,25 +55,21 @@ const routes = [
         component: AuthLayout,
         children: [
             { path: "login", component: Login },
-            { path: "register", component: Register }
-        ]
+            { path: "register", component: Register },
+        ],
     },
 
     // ===== empty layout =====
     {
         path: "/forbidden",
         component: EmptyLayout,
-        children: [
-            { path: "", component: Forbidden }
-        ]
+        children: [{ path: "", component: Forbidden }],
     },
     {
         path: "/:pathMatch(.*)*",
         component: EmptyLayout,
-        children: [
-            { path: "", component: NotFound }
-        ]
-    }
+        children: [{ path: "", component: NotFound }],
+    },
 ];
 
 const router = createRouter({
@@ -86,7 +80,7 @@ const router = createRouter({
         // 如果使用者按返回或前進，會記得之前的位置
         // 或一般導頁時回到最上方
         return savedPosition || { left: 0, top: 0 };
-    }
+    },
 });
 
 export default router;

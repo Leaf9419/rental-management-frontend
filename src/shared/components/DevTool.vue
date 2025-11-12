@@ -102,7 +102,7 @@ import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import { debounce } from "lodash-es";
 
 // 路由
-import propertyDevLinksF from "@/frontend/property/propertyDevLinksF.js";
+import propertyDevLinksF from "@/frontend/property/devLinks.js";
 
 defineEmits(["toggle-bg"]);
 
