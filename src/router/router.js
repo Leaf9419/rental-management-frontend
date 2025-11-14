@@ -6,28 +6,16 @@ import AdminLayout from "@/layouts/AdminLayout.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
 import EmptyLayout from "@/layouts/EmptyLayout.vue";
 
-// 首頁
-import Home from "@/frontend/home/views/Home.vue";
-
-// 公用頁面
-import Forbidden from "@/shared/views/Forbidden.vue";
-import NotFound from "@/shared/views/NotFound.vue";
-
-// 會員認證與後台管理系統
-import Login from "@/frontend/login/views/Login.vue";
-import Register from "@/frontend/register/views/Register.vue";
-import Admin from "@/backend/admin/views/Admin.vue";
-
-// 房源管理與搜尋系統
-
-// 預約合約與排程系統
-
-// 金流系統與通知中心與數據分析
-import Announcement from "@/frontend/announcement/views/Announcement.vue";
-import Help from "@/frontend/help/views/Help.vue";
-
-// Property路由
+// 前台模組路由
+import loginRoutesF from "@/frontend/login/routes";
+import registerRoutesF from "@/frontend/register/routes";
+import announcementRoutesF from "@/frontend/announcement/routes";
+import helpRoutesF from "@/frontend/help/routes";
+import homeRoutesF from "@/frontend/home/routes";
 import propertyRoutesF from "@/frontend/property/routes";
+
+// 後台模組路由
+import adminRoutesB from "@/backend/admin/routes";
 
 const routes = [
     // ===== default layout =====
@@ -35,9 +23,9 @@ const routes = [
         path: "/",
         component: DefaultLayout,
         children: [
-            { path: "", component: Home },
-            { path: "announcement", component: Announcement },
-            { path: "help", component: Help },
+            ...announcementRoutesF,
+            ...helpRoutesF,
+            ...homeRoutesF,
             ...propertyRoutesF,
         ],
     },
@@ -46,29 +34,36 @@ const routes = [
     {
         path: "/admin",
         component: AdminLayout,
-        children: [{ path: "", component: Admin }],
+        children: [...adminRoutesB],
     },
 
     // ===== auth layout =====
     {
         path: "/auth",
         component: AuthLayout,
-        children: [
-            { path: "login", component: Login },
-            { path: "register", component: Register },
-        ],
+        children: [...loginRoutesF, ...registerRoutesF],
     },
 
     // ===== empty layout =====
     {
         path: "/forbidden",
         component: EmptyLayout,
-        children: [{ path: "", component: Forbidden }],
+        children: [
+            {
+                path: "",
+                component: () => import("@/shared/views/Forbidden.vue"),
+            },
+        ],
     },
     {
         path: "/:pathMatch(.*)*",
         component: EmptyLayout,
-        children: [{ path: "", component: NotFound }],
+        children: [
+            {
+                path: "",
+                component: () => import("@/shared/views/NotFound.vue"),
+            },
+        ],
     },
 ];
 
