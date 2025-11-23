@@ -1,7 +1,7 @@
 export default [
-    // {
-    //     path: "/property-test1",
-    //     name: "PropertyTest1",
-    //     component: () => import("@/frontend/property/views/Property.vue"),
-    // },
+    {
+        path: "/auth/login",
+        name: "Login",
+        component: () => import("@/frontend/login/views/Login.vue")
+    }
 ];

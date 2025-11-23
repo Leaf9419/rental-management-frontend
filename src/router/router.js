@@ -7,15 +7,15 @@ import AuthLayout from "@/layouts/AuthLayout.vue";
 import EmptyLayout from "@/layouts/EmptyLayout.vue";
 
 // 前台模組路由
-import loginRoutesF from "@/frontend/login/routes";
-import registerRoutesF from "@/frontend/register/routes";
-import announcementRoutesF from "@/frontend/announcement/routes";
-import helpRoutesF from "@/frontend/help/routes";
-import homeRoutesF from "@/frontend/home/routes";
-import propertyRoutesF from "@/frontend/property/routes";
+import loginRoutesF from "@/frontend/login/routes.js";
+import registerRoutesF from "@/frontend/register/routes.js";
+import announcementRoutesF from "@/frontend/announcement/routes.js";
+import helpRoutesF from "@/frontend/help/routes.js";
+import homeRoutesF from "@/frontend/home/routes.js";
+import propertyRoutesF from "@/frontend/property/routes.js";
 
 // 後台模組路由
-import adminRoutesB from "@/backend/admin/routes";
+import adminRoutesB from "@/backend/admin/routes.js";
 
 const routes = [
     // ===== default layout =====
